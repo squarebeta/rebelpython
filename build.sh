@@ -23,8 +23,12 @@ PROJECT=${1} &&
     fi &&
     VPATCH=$(git describe --tags --long | grep "^v${VMAJOR}.${VMINOR}-[0-9]*-.*\$" | sed -e "s#^v${VMAJOR}.${VMINOR}-\([0-9]*\)-.*\$#\1#") &&
     VERSION=${VMAJOR}.${VMINOR}.${VPATCH} &&
-    cd ../../.. &&
+    cd ../../../.. &&
     mkdir --parents build/spec/${PROJECT} &&
-    sed -e "s#\${VERSION}#${VERSION}#" -e "s#\${RELEASE}#${RELEASE}#" -e "wspec/${REPOSITORY}-${VERSION}.spec" spec/${PROJECT}/${REPOSITORY}.spec &&
-    mock --buildsrpm --spec build/spec/${PROJECT}/${REPOSITORY}-${VERSION}.spec --sources build/src/${PROJECT}/${REPOSITORY} &&
+    echo "AAAAAAA 1" &&
+    sed -e "s#\${VERSION}#${VERSION}#" -e "s#\${RELEASE}#${RELEASE}#" -e "wbuild/spec/${PROJECT}/${REPOSITORY}.spec" spec/${PROJECT}/${REPOSITORY}.spec &&
+    echo "AAAAAAA 2" &&
+    ls build/spec/${PROJECT}/${REPOSITORY}.spec &&
+    ls build/src/${PROJECT}/${REPOSITORY} &&
+    mock --buildsrpm --spec build/spec/${PROJECT}/${REPOSITORY}.spec --sources build/src/${PROJECT}/${REPOSITORY} &&
     true

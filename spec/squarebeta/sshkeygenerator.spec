@@ -2,32 +2,32 @@ Summary:
 Name: sshkeygenerator
 Version: ${VERSION}
 Release: ${RELEASE}
-License: GNU GPL3
-Group: Administration
-URL: http://
-Source0: %{name}
+License: 
+Group: 
+URL: 
+Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 
 %prep
+%setup -q
 
 %build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir --parents ${RPM_BUILD_ROOT}/usr/bin
-cp ssh-key-generator.sh ${RPM_BUILD_ROOT}/usr/bin/ssh-key-generator
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%attr(755,root,root) /usr/bin/ssh-key-generator
+%defattr(-,root,root,-)
+%doc
 
 
 %changelog
-* Mon Nov  2 2015 vagrant <vagrant@localhost.localdomain> - key-generator
+* Mon Nov  2 2015 vagrant <vagrant@localhost.localdomain> - 
 - Initial build.
 
