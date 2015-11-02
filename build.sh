@@ -34,7 +34,7 @@ PROJECT=${1} &&
     ls build/spec/${PROJECT}/${REPOSITORY}.spec &&
     ls build/src/${PROJECT}/${REPOSITORY} &&
     mkdir --parents build/results/${PROJECT}/${REPOSITORY}/buildsrpm/${VERSION}/${RELEASE} &&
-    mock --buildsrpm --spec build/spec/${PROJECT}/${REPOSITORY}.spec --sources build/src/${PROJECT} --resultdir build/results/buildsrpm/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE} &&
+    mock --buildsrpm --spec build/spec/${PROJECT}/${REPOSITORY}.spec --sources build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar.gz --resultdir build/results/buildsrpm/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE} &&
     mkdir --parents build/results/rebuild/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE} &&
     mock --rebuild build/results/buildsrpm/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE}/${REPOSITORY}-${VERSION}-${RELEASE}.src.rpm --resultdir build/results/rebuild/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE} &&
     true
