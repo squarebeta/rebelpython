@@ -26,7 +26,7 @@ PROJECT=${1} &&
     cd ../../../.. &&
     rm --recursive --force  build/src/${PROJECT}/${REPOSITORY}-${VERSION} &&
     cp --recursive build/src/${PROJECT}/${REPOSITORY} build/src/${PROJECT}/${REPOSITORY}-${VERSION} &&
-    tar --create --file build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar --directory build/src/${PROJECT}/${REPOSITORY}-${VERSION} . &&
+    tar --create --file build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar --directory build/src/${PROJECT} ${REPOSITORY}-${VERSION} &&
     gzip -9 --to-stdout  build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar >  build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar.gz &&
     mkdir --parents build/spec/${PROJECT} &&
     echo "AAAAAAA 1" &&
