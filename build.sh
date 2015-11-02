@@ -24,7 +24,7 @@ PROJECT=${1} &&
     VPATCH=$(git describe --tags --long | grep "^v${VMAJOR}.${VMINOR}-[0-9]*-.*\$" | sed -e "s#^v${VMAJOR}.${VMINOR}-\([0-9]*\)-.*\$#\1#") &&
     VERSION=${VMAJOR}.${VMINOR}.${VPATCH} &&
     cd ../../../.. &&
-    cp build/src/${PROJECT}/${REPOSITORY} build/src/${PROJECT}/${REPOSITORY}-${VERSION} &&
+    cp --recursive build/src/${PROJECT}/${REPOSITORY} build/src/${PROJECT}/${REPOSITORY}-${VERSION} &&
     tar --create --file build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar --directory build/src/${PROJECT}/${REPOSITORY}-${VERSION} . &&
     gzip -9 --to-stdout  build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar >  build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar.gz &&
     mkdir --parents build/spec/${PROJECT} &&
@@ -36,5 +36,5 @@ PROJECT=${1} &&
     mkdir --parents build/results/${PROJECT}/${REPOSITORY}/buildsrpm/${VERSION}/${RELEASE} &&
     mock --buildsrpm --spec build/spec/${PROJECT}/${REPOSITORY}.spec --sources build/src/${PROJECT} --resultdir build/results/buildsrpm/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE} &&
     mkdir --parents build/results/rebuild/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE} &&
-    mock --rebuild build/results/buildsrpm/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE}/${REPOSITORY}-${VERSION}-${RELEASE}.src.rpm --resultdir build/results/rebuild/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE}
+    mock --rebuild build/results/buildsrpm/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE}/${REPOSITORY}-${VERSION}-${RELEASE}.src.rpm --resultdir build/results/rebuild/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE} &&
     true
