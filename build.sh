@@ -8,9 +8,19 @@ PROJECT=${1} &&
     RELEASE=${RMAJOR}.${RMINOR}.${RPATCH} &&
     VMAJOR=${5} &&
     VMINOR=${6} &&
-    mkdir --parents build/src/${PROJECT} &&
-    cd build/src/${PROJECT} &&
-    git clone git@github.com:${PROJECT}/${REPOSITORY}.git &&
+    if [ -d build/${PROJECT}/${REPOSITORY} ]
+    then
+	cd build/src/${PROJECT}/${REPOSITORY} &&
+	    git fetch origin master &&
+	    git rebase origin/master &&
+	    true
+    else
+	mkdir --parents build/src/${PROJECT} &&
+	    cd build/src/${PROJECT} &&
+	    git clone git@github.com:${PROJECT}/${REPOSITORY}.git &&
+	    cd ${REPOSITORY} &&
+	    true
+    fi &&
     VPATCH=$(git describe --tags --long | grep "^v${VMAJOR}.${VMINOR}-[0-9]*-.*\$" | sed -e "s#^v${VMAJOR}.${VMINOR}-\([0-9]*\)-.*\$#\1#") &&
     VERSION=${VMAJOR}.${VMINOR}.${VPATCH} &&
     cd ../../.. &&

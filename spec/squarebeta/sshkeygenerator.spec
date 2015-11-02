@@ -1,7 +1,7 @@
 Summary: 
 Name: sshkeygenerator
 Version: ${VERSION}
-Release: 0
+Release: ${RELEASE}
 License: GNU GPL3
 Group: Administration
 URL: http://
