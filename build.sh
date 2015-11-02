@@ -15,6 +15,6 @@ PROJECT=${1} &&
     VERSION=${VMAJOR}.${VMINOR}.${VPATCH} &&
     cd ../../.. &&
     mkdir --parents build/spec/${PROJECT} &&
-    sed -e "s#\${VERSION}#${VERSION}#" -e "wspec/${REPOSITORY}-${VERSION}.spec" spec/${PROJECT}/${REPOSITORY}.spec &&
+    sed -e "s#\${VERSION}#${VERSION}#" -e "s#\${RELEASE}#${RELEASE}#" -e "wspec/${REPOSITORY}-${VERSION}.spec" spec/${PROJECT}/${REPOSITORY}.spec &&
     mock --buildsrpm --spec build/spec/${PROJECT}/${REPOSITORY}-${VERSION}.spec --sources build/src/${PROJECT}/${REPOSITORY} &&
     true
