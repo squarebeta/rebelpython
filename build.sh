@@ -8,7 +8,7 @@ PROJECT=${1} &&
     RELEASE=${RMAJOR}.${RMINOR}.${RPATCH} &&
     VMAJOR=${5} &&
     VMINOR=${6} &&
-    if [ -d build/${PROJECT}/${REPOSITORY} ]
+    if [ -d build/src/${PROJECT}/${REPOSITORY} ]
     then
 	cd build/src/${PROJECT}/${REPOSITORY} &&
 	    git fetch origin master &&
