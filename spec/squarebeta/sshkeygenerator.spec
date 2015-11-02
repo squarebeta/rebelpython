@@ -5,7 +5,7 @@ Release: ${RELEASE}
 License: GNU GPL3
 Group: Administration
 URL: http://127.0.0.1
-Source0: %{name}
+Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
@@ -14,7 +14,7 @@ adds an entry to the config file,
 cats the public key
 
 %prep
-# %setup -q
+%setup -q
 
 %build
 
