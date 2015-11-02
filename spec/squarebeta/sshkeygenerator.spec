@@ -14,7 +14,7 @@ adds an entry to the config file,
 cats the public key
 
 %prep
-%setup -q
+# %setup -q
 
 %build
 
