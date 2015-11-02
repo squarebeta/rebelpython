@@ -24,7 +24,8 @@ PROJECT=${1} &&
     VPATCH=$(git describe --tags --long | grep "^v${VMAJOR}.${VMINOR}-[0-9]*-.*\$" | sed -e "s#^v${VMAJOR}.${VMINOR}-\([0-9]*\)-.*\$#\1#") &&
     VERSION=${VMAJOR}.${VMINOR}.${VPATCH} &&
     cd ../../../.. &&
-    tar --create --file build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar --directory build/src/${PROJECT}/${REPOSITORY} . &&
+    cp build/src/${PROJECT}/${REPOSITORY} build/src/${PROJECT}/${REPOSITORY}-${VERSION} &&
+    tar --create --file build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar --directory build/src/${PROJECT}/${REPOSITORY}-${VERSION} . &&
     gzip -9 --to-stdout  build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar >  build/src/${PROJECT}/${REPOSITORY}-${VERSION}.tar.gz &&
     mkdir --parents build/spec/${PROJECT} &&
     echo "AAAAAAA 1" &&
