@@ -30,5 +30,6 @@ PROJECT=${1} &&
     echo "AAAAAAA 2" &&
     ls build/spec/${PROJECT}/${REPOSITORY}.spec &&
     ls build/src/${PROJECT}/${REPOSITORY} &&
-    mock --buildsrpm --spec build/spec/${PROJECT}/${REPOSITORY}.spec --sources build/src/${PROJECT}/${REPOSITORY} &&
+    mkdir --parents build/results/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE} &&
+    mock --buildsrpm --spec build/spec/${PROJECT}/${REPOSITORY}.spec --sources build/src/${PROJECT}/${REPOSITORY} --resultdir build/results/${PROJECT}/${REPOSITORY}/${VERSION}/${RELEASE} &&
     true
